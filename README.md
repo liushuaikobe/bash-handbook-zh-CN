@@ -140,3 +140,25 @@ unset username          # 删除变量
 ```bash
 local local_var="I'm a local value"
 ```
+
+## 环境变量
+
+**环境变量** 是对当前shell会话内所有的程序或脚本都可见的变量。创建它们跟创建局部变量类似，但使用的是`export`关键字。
+
+```bash
+export GLOBAL_VAR="I'm a global variable"
+```
+
+bash中有 _非常多_ 的环境变量。你会非常频繁地遇到它们，这里有一张速查表，记录了在实践中最常见的环境变量。
+
+| Variable     | Description                                                   |
+| :----------- | :------------------------------------------------------------ |
+| `$HOME`      | 当前用户的用户目录                           |
+| `$PATH`      | 用分号分隔的目录列表，shell会到这些目录中查找命令 |
+| `$PWD`       | 当前工作目录                                |
+| `$RANDOM`    | 0到32767之间的整数                           |
+| `$UID`       | 数值类型， 当前用户的用户ID                |
+| `$PS1`       | 主要系统输入提示符                                    |
+| `$PS2`       | 次要系统输入提示符                                  |
+
+[这里](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_03_02.html#sect_03_02_04)有一张更全面的Bash环境变量列表。
