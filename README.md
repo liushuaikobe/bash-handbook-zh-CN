@@ -241,3 +241,32 @@ echo $(( x + y ))     # 11
 echo $(( ++x + y++ )) # 12
 echo $(( x + y ))     # 13
 ```
+
+## 单引号和双引号
+
+单引号和双引号之间有很重要的区别。在双引号中，变量引用或者命令置换是会被展开的。在单引号中是不会的。举个例子：
+
+```bash
+echo "Your home: $HOME" # Your home: /Users/<username>
+echo 'Your home: $HOME' # Your home: $HOME
+```
+
+当局部变量和环境变量包含空格时，它们在引号中的扩展要格外注意。随便举个例子，加入我们用`echo`来输出用户的输入：
+
+```bash
+INPUT="A string  with   strange    whitespace."
+echo $INPUT   # A string with strange whitespace.
+echo "$INPUT" # A string  with   strange    whitespace.
+```
+
+调用第一个`echo`时给了它5个单独的参数 —— $INPUT被分成了单独的词，`echo`在每个词之间打印了一个空格。第二种情况，调用`echo`时只给了它一个参数（整个$INPUT的值，包括其中的空格）。
+
+来看一个更严肃的例子：
+
+```bash
+FILE="Favorite Things.txt"
+cat $FILE   # 尝试输出两个文件: `Favorite` 和 `Things.txt`
+cat "$FILE" # 输出一个文件: `Favorite Things.txt`
+```
+
+尽管这个问题可以通过把FILE重命名成`Favorite-Things.txt`来解决，但是，假如这个值来自某个环境变量，来自一个位置参数，或者来自其它命令（`find`, `cat`, 等等）呢。因此，如果输入 *可能* 包含空格，务必要把表达式用引号包起来。
