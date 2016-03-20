@@ -333,7 +333,7 @@ printf "+ %s\n" "${fruits[*]}"
 # + Apple Desert fig Plum
 ```
 
-现在所有的元素都跑去了一行 —— 这不是我们想要的！`${fruits[@]}`就是为了解决这个痛点的：
+现在所有的元素都跑去了一行 —— 这不是我们想要的！为了解决这个痛点，`${fruits[@]}`闪亮登场：
 
 ```bash
 printf "+ %s\n" "${fruits[@]}"
