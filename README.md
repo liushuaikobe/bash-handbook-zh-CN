@@ -275,7 +275,7 @@ cat "$FILE" # 输出一个文件: `Favorite Things.txt`
 
 跟其它程序设计语言一样，bash中数组变量给了你引用多个值的能力。在bash中，数组下标也是从0开始，也就是说，第一个元素的下标是0。
 
-跟数组打交道时，要注意一个特殊的环境变量`IFS`。**IFS**，全称是 **Input Field Separator**，保存了数组中元素的分隔符。它的默认值是一个空格`IFS=' '`。
+跟数组打交道时，要注意一个特殊的环境变量`IFS`。**IFS**，全称 **Input Field Separator**，保存了数组中元素的分隔符。它的默认值是一个空格`IFS=' '`。
 
 ## 数组声明
 
@@ -300,3 +300,46 @@ fruits=(Apple Pear Plum)
 ```bash
 echo ${fruits[1]} # Pear
 ```
+
+整个数组可以通过把数字下标换成`*`或`@`来扩展：
+
+```bash
+echo ${fruits[*]} # Apple Pear Plum
+echo ${fruits[@]} # Apple Pear Plum
+```
+
+上面两行有很重要（也很微妙）的区别，假设某数组元素中包含空格：
+
+```bash
+fruits[0]=Apple
+fruits[1]="Desert fig"
+fruits[2]=Plum
+```
+
+为了将数组中每个元素单独一行输出，我们用内建的`printf`命令：
+
+```bash
+printf "+ %s\n" ${fruits[*]}
+# + Apple
+# + Desert
+# + fig
+# + Plum
+```
+
+为什么`Desert`和`fig`各占了一行？尝试用引号包起来：
+
+```bash
+printf "+ %s\n" "${fruits[*]}"
+# + Apple Desert fig Plum
+```
+
+现在所有的元素都跑去了一行 —— 这不是我们想要的！`${fruits[@]}`就是为了解决这个痛点的：
+
+```bash
+printf "+ %s\n" "${fruits[@]}"
+# + Apple
+# + Desert fig
+# + Plum
+```
+
+在引号内，`${fruits[@]}`将数组中的每个元素扩展为一个单独的参数；数组元素中的空格得以保留。
