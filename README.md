@@ -353,3 +353,23 @@ echo ${fruits[@]:0:2} # Apple Desert fig
 ```
 
 在上面的例子中，`${fruits[@]}`扩展为整个数组，`:0:2`取出了数组中从0开始，长度为2的元素。
+
+## 向数组中添加元素
+
+向数组中添加元素也非常简单。复合赋值在这里显得格外有用。我们可以这样做：
+
+```bash
+fruits=(Orange "${fruits[@]}" Banana Cherry)
+echo ${fruits[@]} # Orange Apple Desert fig Plum Banana Cherry
+```
+
+上面的例子中，`${fruits[@]}`扩展为整个数组，并被置换到复合赋值语句中，接着，对数组`fruits`的赋值覆盖了它原来的值。
+
+## 从数组中删除元素
+
+用`unset`命令来从数组中删除一个元素：
+
+```bash
+unset fruits[0]
+echo ${fruits[@]} # Apple Desert fig Plum Banana Cherry
+```
