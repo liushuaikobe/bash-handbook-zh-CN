@@ -373,3 +373,50 @@ echo ${fruits[@]} # Orange Apple Desert fig Plum Banana Cherry
 unset fruits[0]
 echo ${fruits[@]} # Apple Desert fig Plum Banana Cherry
 ```
+
+# 流，管道以及列表
+
+Bash有很强大的工具来处理程序之间的协同工作。使用流，我们能将一个程序的输出发送到另一个程序或文件，因此，我们能方便地记录日志或做一些其它我们想做的事。
+
+管道给了我们创建传送带的机会，控制程序的执行成为可能。
+
+学习如何使用这些强大的、高级的工具是非常非常重要的。
+
+## 流
+
+Bash接收输入，并以字符序列或 **字符流** 的形式产生输出。这些流能被重定向到文件或另一个流中。
+
+有三个文件描述符：
+
+| 代码 | 描述符 | 描述               |
+| :--: | :--------: | :------------------- |
+| `0`  | `stdin`    | 标准输入       |
+| `1`  | `stdout`   | 标准输出       |
+| `2`  | `stderr`   | 标准错误输出   |
+
+重定向让我们可以控制一个命令的输入来自哪里，输出结果到什么地方。这些运算符在控制流的重定向时会被用到：
+
+| Operator | Description                                  |
+| :------: | :------------------------------------------- |
+| `>`      | 重定向输出                     |
+| `&>`     | 重定向输出和错误输出            |
+| `&>>`    | 以附加的形式重定向输出和错误输出 |
+| `<`      | 重定向输入                     |
+| `<<`     | [Here文档](http://tldp.org/LDP/abs/html/here-docs.html) 语法 |
+| `<<<`    | [Here字符串](http://www.tldp.org/LDP/abs/html/x17837.html) |
+
+以下是一些使用重定向的例子[**TODO**](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-3.html)：
+
+```bash
+# ls的结果将会被写到list.txt中
+ls -l > list.txt
+
+# 将输出附加到list.txt中
+ls -a >> list.txt
+
+# 所有的错误信息将会被写到errors.txt中
+grep da * 2> errors.txt
+
+# 从errors.txt中读取输入
+less < errors.txt
+```
