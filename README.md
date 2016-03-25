@@ -569,3 +569,28 @@ else
   echo "Apples are delicious!"
 fi
 ```
+
+## 使用`case`
+
+如果你需要面对很多情况，分别要采取不同的措施，那么使用`case`会比嵌套的`if`更有用。使用`case`来解决复杂的条件判断看起来像下面这样：
+
+```bash
+case "$extension" in
+  "jpg"|"jpeg")
+    echo "It's image with jpeg extension."
+  ;;
+  "png")
+    echo "It's image with png extension."
+  ;;
+  "gif")
+    echo "Oh, it's a giphy!"
+  ;;
+  *)
+    echo "Woops! It's not image!"
+  ;;
+esac
+```
+
+每种情况都是匹配了某个模式的表达式。`|`用来分割多个模式，`)`用来结束一个模式序列。第一个匹配上的模式对应的命令将会被执行。`*`代表任何不匹配以上给定模式的模式。命令块儿之间要用`;;`分隔。
+
+# 循环
