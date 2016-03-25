@@ -527,3 +527,45 @@ _与_ 或 _或_ 序列的返回值是序列中最后一个执行的命令的返�
 | `[ EXPR1 -o EXPR2 ]` | 逻辑 _或_， 如果`EXPR1`或（**o**r）`EXPR2`为真，为真     |
 
 当然，还有很多有用的基元，在[Bash的man页面](http://www.gnu.org/software/bash/manual/html_node/Bash-Conditional-Expressions.html)能很容易找到它们。
+
+## 使用`if`
+
+`if`在使用上跟其它语言相同。如果中括号里的表达式为真，那么`then`和`fi`之间的代码会被执行。`fi`标志着条件代码块的结束。
+
+```bash
+# 写成一行
+if [[ 1 -eq 1 ]]; then echo "true"; fi
+
+# 写成多行
+if [[ 1 -eq 1 ]]; then
+  echo "true"
+fi
+```
+
+同样地，我们可以使用`if..else`语句，例如：
+
+```bash
+# 写成一行
+if [[ 2 -ne 1 ]]; then echo "true"; else echo "false"; fi
+
+# 写成多行
+if [[ 2 -ne 1 ]]; then
+  echo "true"
+else
+  echo "false"
+fi
+```
+
+有些时候，`if..else`不能满足我们的要求。别忘了`if..elif..else`，使用起来也很方便。
+
+看下面的例子：
+
+```bash
+if [[ `uname` == "Adam" ]]; then
+  echo "Do not eat an apple!"
+elif [[ `uname` == "Eva" ]]; then
+  echo "Do not take an apple!"
+else
+  echo "Apples are delicious!"
+fi
+```
