@@ -636,3 +636,29 @@ for FILE in $HOME/*.bash; do
   chmod +x "${HOME}/scripts/${FILE}"
 done
 ```
+
+## `while`循环
+
+`while`循环检测一个条件，只要这个条件为 _真_，就执行一段命令。被检测的条件跟`if..then`中使用的[基元](#TODO)并无二异。因此一个`while`循环看起来会是这样：
+
+```bash
+while [[ condition ]]
+do
+  # 语句
+done
+```
+
+跟`for`循环一样，如果我们把`do`和被检测的条件写到一行，那么必须要在`do`之前加一个分号。
+
+比如下面这个例子：
+
+```bash
+#!/bin/bash
+
+# 0到9之间每个数的平方
+x=0
+while [[ $x -lt 10 ]]; do # x小于10
+  echo $(( x * x ))
+  x=$(( x + 1 )) # x加1å
+done
+```
