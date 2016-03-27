@@ -775,3 +775,66 @@ greeting        # Hello, unknown!
 ```
 
 我们之前已经介绍过[返回值](#TODO)。不带任何参数的`return`会返回最后一个执行的命令的返回值。上面的例子，`return 0`会返回一个成功表示执行的值，`0`。
+
+## Debugging
+
+shell提供了用于debugging脚本的工具。如果我们想以debug模式运行某脚本，可以在其shebang中使用一个特殊的选项：
+
+```bash
+#!/bin/bash options
+```
+
+options是一些可以改变shell行为的选项。下表是一些可能对你有用的选项：
+
+| Short | Name        | Description                                            |
+| :---: | :---------- | :----------------------------------------------------- |
+| `-f`  | noglob      | 禁止文件名展开（globbing）                              |
+| `-i`  | interactive | 让脚本以 _交互_ 模式运行                                |
+| `-n`  | noexec      | 读取命令，但不执行（语法检查）                           |
+| `-t`  | —           | 执行完第一条命令后退出                                  |
+| `-v`  | verbose     | 在执行每条命令前，向`stderr`输出该命令                   |
+| `-x`  | xtrace      | 在执行每条命令前，向`stderr`输出该命令以及该命令的扩展参数 |
+
+举个例子，如果我们在脚本中指定了`-x`例如：
+
+```bash
+#!/bin/bash -x
+
+for (( i = 0; i < 3; i++ )); do
+  echo $i
+done
+```
+
+这会向`stdout`打印出变量的值和一些其它有用的信息：
+
+```
+$ ./my_script
++ (( i = 0 ))
++ (( i < 3 ))
++ echo 0
+0
++ (( i++  ))
++ (( i < 3 ))
++ echo 1
+1
++ (( i++  ))
++ (( i < 3 ))
++ echo 2
+2
++ (( i++  ))
++ (( i < 3 ))
+```
+
+有时我们需要debug脚本的一部分。这种情况下，使用`set`命令会很方便。这个命令可以启用或禁用选项。使用`-`启用选项，`+`禁用选项：
+
+```bash
+#!/bin/bash
+
+echo "xtrace is turned off"
+set -x
+echo "xtrace is enabled"
+set +x
+echo "xtrace is turned off again"
+```
+
+# 后记
