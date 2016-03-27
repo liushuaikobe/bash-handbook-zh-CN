@@ -719,3 +719,20 @@ Choose the package manager: 2
 Enter the package name: bash-handbook
 <installing bash-handbook>
 ```
+
+## 循环控制
+
+我们会遇到想提前结束一个循环或跳过某次循环执行的情况。这些可以使用shell内建的`break`和`continue`语句来实现。它们可以在任何循环中使用。
+
+`break`语句用来提前结束当前循环。我们之前已经见过它了。
+
+`continue`语句用来跳过某次迭代。我们可以这么来用它：
+
+```bash
+for (( i = 0; i < 10; i++ )); do
+  if [[ $(( i % 2 )) -eq 0 ]]; then continue; fi
+  echo $i
+done
+```
+
+运行上面的例子，会打印出所有0到9之间的奇数。
