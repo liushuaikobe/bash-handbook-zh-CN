@@ -659,6 +659,63 @@ done
 x=0
 while [[ $x -lt 10 ]]; do # x小于10
   echo $(( x * x ))
-  x=$(( x + 1 )) # x加1å
+  x=$(( x + 1 )) # x加1
 done
+```
+
+## `until`循环
+
+`until`循环跟`while`循环正好相反。它跟`while`一样也需要检测一个测试条件，但不同的是，只要该条件为 _假_ 就一直执行循环：
+
+```bash
+until [[ condition ]]; do
+  # 语句
+done
+```
+
+## `select`循环
+
+`select`循环帮助我们组织一个用户菜单。它的语法几乎跟`for`循环一致：
+
+```bash
+select answer in elem1 elem2 ... elemN
+do
+  # 语句
+done
+```
+
+`select`会打印`elem1..elemN`以及它们的序列号到屏幕上，之后会提示用户输入。通常看到的是`$?`（`PS3`变量）。用户的选择结果会被保存到`answer`中。如果`answer`是一个在`1..N`之间的数字，那么`语句`会被执行，紧接着会进行下一次迭代 —— 如果不想这样的话我们可以使用`break`语句。
+
+一个可能的实例可能会是这样：
+
+```bash
+#!/bin/bash
+
+PS3="Choose the package manager: "
+select ITEM in bower npm gem pip
+do
+  echo -n "Enter the package name: " && read PACKAGE
+  case $ITEM in
+    bower) bower install $PACKAGE ;;
+    npm)   npm   install $PACKAGE ;;
+    gem)   gem   install $PACKAGE ;;
+    pip)   pip   install $PACKAGE ;;
+  esac
+  break # 避免无限循环
+done
+```
+
+这个例子，先询问用户他想使用什么包管理器。接着，又询问了想安装什么包，最后执行安装操作。
+
+运行这个脚本，会得到如下输出：
+
+```
+$ ./my_script
+1) bower
+2) npm
+3) gem
+4) pip
+Choose the package manager: 2
+Enter the package name: bash-handbook
+<installing bash-handbook>
 ```
