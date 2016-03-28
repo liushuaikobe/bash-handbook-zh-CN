@@ -841,11 +841,16 @@ echo "xtrace is turned off again"
 
 我希望这本小小的册子能很有趣且很有帮助。老实说，我写这本小册子是为了自己不会忘了bash的基础知识。我尽量让文字简明达意，希望你们会喜欢。
 
-这本小册子讲述了我自己的Bash经验。它的本意并非全面综合，因此如果你想了解更多，请运行`man bash`，从那里开始。
+这本小册子讲述了我自己的Bash经验。它并非全面综合，因此如果你想了解更多，请运行`man bash`，从那里开始。
 
-非常欢迎您的贡献，任何指正和问题我都非常感激。这些都可以通过创建一个[issue
-](#TODO)来进行。
+非常欢迎您的贡献，任何指正和问题我都非常感激。这些都可以通过创建一个[issue](#TODO)来进行。
 
 感谢您的阅读！
 
 # 想了解更多？
+
+下面是一些其它有关Bash的资料：
+
+* Bash的man页面。在Bash可以运行的众多环境中，通过运行`man bash`可以借助帮助系统`man`来显示Bash的帮助信息。有关`man`命令的更多信息，请看托管在[The Linux Information Project](http://www.linfo.org/)上的网页["The man Command"](http://www.linfo.org/man.html)。
+* ["Bourne-Again SHell manual"](https://www.gnu.org/software/bash/manual/)，有很多可选的格式，包括HTML，Info，Tex，PDF，以及Textinfo。托管在<https://www.gnu.org/>上。截止到2016/01，它基于的是Bash的4.3版本，最后更新日期是2015/02/02。
+* [Bash 3.2 Man page](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/bash.1.html)，托管在苹果的Mac Developer Library网站上。截止到2016/01，它基于的是Bash的3.2版本，最后更新日期是2006/09/28。
