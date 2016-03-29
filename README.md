@@ -76,7 +76,7 @@ bash shell有交互和非交互两种模式。
 ## 交互模式
 
 Ubuntu用户都知道，在Ubuntu中有7个虚拟终端。
-桌面环境接管了第7个虚拟终端，于是按下`Ctrl-Alt-F7`，便可以去到一个操作友好的图形用户界面。
+桌面环境接管了第7个虚拟终端，于是按下`Ctrl-Alt-F7`，可以去到一个操作友好的图形用户界面。
 
 即便如此，还是可以通过`Ctrl-Alt-F1`，来打开shell。打开后，熟悉的图形用户界面消失了，一个虚拟终端展现出来。
 
@@ -213,7 +213,7 @@ bash中有 _非常多_ 的环境变量。你会非常频繁地遇到它们，这
 | `${10} … ${N}` | 第10个到N个参数列表                                           |
 | `$*` or `$@`   | 除了`$0`外的所有位置参数                                      |
 | `$#`           | 不包括`$0`在内的位置参数的个数                                 |
-| `$FUNCNAME`    | 函数名称（仅在函数一个函数内部有值）                            |
+| `$FUNCNAME`    | 函数名称（仅在函数内部有值）                            |
 
 在下面的例子中，位置参数为：`$0='./script.sh'`，`$1='foo'`，`$2='bar'`：
 
@@ -290,7 +290,7 @@ echo "Your home: $HOME" # Your home: /Users/<username>
 echo 'Your home: $HOME' # Your home: $HOME
 ```
 
-当局部变量和环境变量包含空格时，它们在引号中的扩展要格外注意。随便举个例子，加入我们用`echo`来输出用户的输入：
+当局部变量和环境变量包含空格时，它们在引号中的扩展要格外注意。随便举个例子，假如我们用`echo`来输出用户的输入：
 
 ```bash
 INPUT="A string  with   strange    whitespace."
@@ -312,7 +312,7 @@ cat "$FILE" # 输出一个文件: `Favorite Things.txt`
 
 # 数组
 
-跟其它程序设计语言一样，bash中数组变量给了你引用多个值的能力。在bash中，数组下标也是从0开始，也就是说，第一个元素的下标是0。
+跟其它程序设计语言一样，bash中的数组变量给了你引用多个值的能力。在bash中，数组下标也是从0开始，也就是说，第一个元素的下标是0。
 
 跟数组打交道时，要注意一个特殊的环境变量`IFS`。**IFS**，全称 **Input Field Separator**，保存了数组中元素的分隔符。它的默认值是一个空格`IFS=' '`。
 
@@ -453,7 +453,7 @@ ls -l > list.txt
 # 将输出附加到list.txt中
 ls -a >> list.txt
 
-# 所有的错误信息将会被写到errors.txt中
+# 所有的错误信息会被写到errors.txt中
 grep da * 2> errors.txt
 
 # 从errors.txt中读取输入
@@ -464,7 +464,7 @@ less < errors.txt
 
 我们不仅能将流重定向到文件中，还能重定向到其它程序中。**管道** 允许我们把一个程序的输出当做另一个程序的输入。
 
-在下面的例子中，`command1`把它的输出发送给了`command2`，接着输出被传递到`command3`：
+在下面的例子中，`command1`把它的输出发送给了`command2`，然后输出被传递到`command3`：
 
     command1 | command2 | command3
 
@@ -585,7 +585,7 @@ if [[ 1 -eq 1 ]]; then
 fi
 ```
 
-同样地，我们可以使用`if..else`语句，例如：
+同样，我们可以使用`if..else`语句，例如：
 
 ```bash
 # 写成一行
@@ -653,7 +653,7 @@ do
 done
 ```
 
-在每次循环的过程中，`arg`依次被赋值为从`elem1`到`elemN`。arg的可选值还可以是通配符或者[大括号扩展](#大括号扩展)。
+在每次循环的过程中，`arg`依次被赋值为从`elem1`到`elemN`。这些值还可以是通配符或者[大括号扩展](#大括号扩展)。
 
 当然，我们还可以把`for`循环写在一行，但这要求`do`之前要有一个分号，就像下面这样：
 
@@ -907,7 +907,7 @@ echo "xtrace is turned off again"
 * [learnyoubash](https://github.com/denysdovhan/learnyoubash)，帮助你编写你的第一个bash脚本
 * [shellcheck](https://github.com/koalaman/shellcheck)，一个shell脚本的静态分析工具，既可以在网页[www.shellcheck.net](http://www.shellcheck.net/)上使用它，又可以在命令行中使用，安装教程在[koalaman/shellcheck](https://github.com/koalaman/shellcheck)的github仓库页面上
 
-最后，Stack Overflow上[bash标签下](https://stackoverflow.com/questions/tagged/bash)有你可以学习的很多问题，当你遇到问题时，也是一个提问的好地方。
+最后，Stack Overflow上[bash标签下](https://stackoverflow.com/questions/tagged/bash)有很多你可以学习的问题，当你遇到问题时，也是一个提问的好地方。
 
 # License
 
