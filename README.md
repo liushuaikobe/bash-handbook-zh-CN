@@ -915,3 +915,5 @@ echo "xtrace is turned off again"
 
 [cc-url]: http://creativecommons.org/licenses/by/4.0/
 [cc-image]: https://i.creativecommons.org/l/by/4.0/80x15.png
+
+# [译者手记](./translator-notes.md)
