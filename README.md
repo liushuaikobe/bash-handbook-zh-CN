@@ -435,6 +435,10 @@ less < errors.txt
 
     ls -l | grep .md$ | less
 
+管道的返回值通常是管道中最后一个命令的返回值。shell会等到管道中所有的命令都结束后，才会返回一个值。如果你想让管道中任意一个命令失败后，管道就宣告失败，那么需要用下面的命令设置pipefail选项：
+
+    set -o pipefail
+
 ## 命令序列
 
 命令序列是由`;`，`&`，`&&`或者`||`运算符分隔的一个或多个管道序列。
@@ -854,3 +858,21 @@ echo "xtrace is turned off again"
 * Bash的man页面。在Bash可以运行的众多环境中，通过运行`man bash`可以借助帮助系统`man`来显示Bash的帮助信息。有关`man`命令的更多信息，请看托管在[The Linux Information Project](http://www.linfo.org/)上的网页["The man Command"](http://www.linfo.org/man.html)。
 * ["Bourne-Again SHell manual"](https://www.gnu.org/software/bash/manual/)，有很多可选的格式，包括HTML，Info，Tex，PDF，以及Textinfo。托管在<https://www.gnu.org/>上。截止到2016/01，它基于的是Bash的4.3版本，最后更新日期是2015/02/02。
 * [Bash 3.2 Man page](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/bash.1.html)，托管在苹果的Mac Developer Library网站上。截止到2016/01，它基于的是Bash的3.2版本，最后更新日期是2006/09/28。
+
+# 其它资源
+
+* [awesome-bash](https://github.com/awesome-lists/awesome-bash)，是一个组织有序的有关Bash脚本以及相关资源的列表
+* [awesome-shell](https://github.com/alebcay/awesome-shell)，另一个组织有序的shell资源列表
+* [bash-it](https://github.com/Bash-it/bash-it)，为你日常使用，开发以及维护shell脚本和自定义命令提供了一个可靠的框架
+* [dotfiles.github.io](http://dotfiles.github.io/)，上面有bash和其它shell的各种dotfiles集合以及shell框架的链接
+* [learnyoubash](https://github.com/denysdovhan/learnyoubash)，帮助你编写你的第一个bash脚本
+* [shellcheck](https://github.com/koalaman/shellcheck)，一个shell脚本的静态分析工具，既可以在网页[www.shellcheck.net](http://www.shellcheck.net/)上使用它，又可以在命令行中使用，安装教程在[koalaman/shellcheck](https://github.com/koalaman/shellcheck)的github仓库页面上
+
+最后，Stack Overflow上[bash标签下](https://stackoverflow.com/questions/tagged/bash)有你可以学习的很多问题，当你遇到问题时，也是一个提问的好地方。
+
+# License
+
+[![CC 4.0][cc-image]][cc-url] © [Shuai Liu](http://blog.vars.me)
+
+[cc-url]: http://creativecommons.org/licenses/by/4.0/
+[cc-image]: https://i.creativecommons.org/l/by/4.0/80x15.png
