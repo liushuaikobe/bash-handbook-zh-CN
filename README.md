@@ -911,7 +911,12 @@ echo "xtrace is turned off again"
 
 # License
 
-[![CC 4.0][cc-image]][cc-url] © [Shuai Liu](http://blog.vars.me)
+[![CC 4.0][cc-image]][cc-url] © [Denys Dovhan](http://denysdovhan.com)
+
+[cc-url]: http://creativecommons.org/licenses/by/4.0/
+[cc-image]: https://i.creativecommons.org/l/by/4.0/80x15.png
+
+[![CC 4.0][cc-image]][cc-url] © [Shuai Liu](http://blog.vars.me) For Chinese translation
 
 [cc-url]: http://creativecommons.org/licenses/by/4.0/
 [cc-image]: https://i.creativecommons.org/l/by/4.0/80x15.png
