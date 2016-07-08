@@ -12,4 +12,4 @@
 
 期待读者的鼓励。
 
-![wechat](http://7xjdjy.com1.z0.glb.clouddn.com/wechat-translation.JPG)
+![donate](http://7xjdjy.com1.z0.glb.clouddn.com/donate.png)
